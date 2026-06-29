@@ -45,25 +45,36 @@ export default function Contact() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
+    let apiSent = false;
+
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(values),
       });
+      if (res.ok) apiSent = true;
+    } catch {
+      // API not available (e.g. local dev) — fall through to mailto
+    }
 
-      if (!res.ok) throw new Error('Failed');
+    setIsSubmitting(false);
 
+    if (apiSent) {
       form.reset();
       setLocation('/thank-you');
-    } catch {
+    } else {
+      // Fallback: open the visitor's email client with fields pre-filled
+      const subject = encodeURIComponent(`Appointment Request – ${values.service}`);
+      const body = encodeURIComponent(
+        `Name: ${values.name}\nPhone: ${values.phone}\nEmail: ${values.email}\nService: ${values.service}${values.message ? `\n\nMessage:\n${values.message}` : ''}`
+      );
+      window.location.href = `mailto:info@themaintenanceman.co.uk?subject=${subject}&body=${body}`;
       toast({
-        title: 'Something went wrong',
-        description: 'Please try again or call us directly on +44 7411 808807.',
-        variant: 'destructive',
+        title: 'Opening your email app…',
+        description: 'Your details are pre-filled — just hit send.',
       });
-    } finally {
-      setIsSubmitting(false);
+      form.reset();
     }
   }
 
