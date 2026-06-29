@@ -11,6 +11,7 @@ import FAQ from '@/components/sections/FAQ';
 import BookingCTA from '@/components/sections/BookingCTA';
 import Contact from '@/components/sections/Contact';
 import Footer from '@/components/sections/Footer';
+import WhatsAppButton from '@/components/sections/WhatsAppButton';
 
 export default function Home() {
   return (
@@ -30,6 +31,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <WhatsAppButton />
       <MobileBookingBar />
     </div>
   );
