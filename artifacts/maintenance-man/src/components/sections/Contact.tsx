@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -183,10 +182,9 @@ export default function Contact() {
 
                 <Button
                   type="submit"
-                  disabled={isSubmitting}
                   className="w-full h-12 text-base font-bold bg-primary hover:bg-primary/90 text-white rounded-md"
                 >
-                  {isSubmitting ? 'Sending…' : 'Request Appointment'}
+                  Request Appointment
                 </Button>
               </form>
             </Form>
