@@ -41,17 +41,42 @@ export default function Contact() {
     defaultValues: { name: '', phone: '', email: '', service: '', message: '' },
   });
 
-  function onSubmit(_values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const endpoint = import.meta.env.VITE_FORM_ENDPOINT;
+    if (!endpoint) {
+      toast({
+        title: 'Form not configured',
+        description: 'Set VITE_FORM_ENDPOINT in your Vercel environment variables.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(values),
+      });
+
+      if (!res.ok) throw new Error('Submission failed');
+
       toast({
         title: 'Request Sent Successfully',
         description:
           "Thanks for reaching out! We'll be in touch shortly to confirm your appointment.",
       });
       form.reset();
-    }, 1500);
+    } catch {
+      toast({
+        title: 'Something went wrong',
+        description: 'Please try again or contact us directly by phone.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
