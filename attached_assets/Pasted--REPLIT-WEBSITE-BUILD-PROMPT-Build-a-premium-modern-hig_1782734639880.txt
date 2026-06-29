@@ -1,0 +1,362 @@
+# REPLIT WEBSITE BUILD PROMPT
+
+Build a premium, modern, high-converting website for a sports massage and injury prevention clinic called:
+
+THE MAINTENANCE MAN
+Sports Massage & Injury Prevention
+
+Business Information:
+
+* Business Name: The Maintenance Man
+* Industry: Sports Massage Therapy
+* Location: London, England
+* Address: 232b Hornsey Rd, London N7 7LL
+* Phone: +44 7411 808807
+* Rating: 5.0 Stars (79+ Reviews)
+* Tagline: Helping People Move Pain-Free For Over 10 Years
+
+OBJECTIVE:
+
+Create a website that immediately builds trust and generates more bookings from athletes, gym-goers, runners, office workers, and people suffering from pain, stiffness, injuries, or mobility issues.
+
+The design should look significantly better than typical local therapist websites and feel comparable to premium wellness and healthcare brands.
+
+---
+
+## DESIGN SYSTEM
+
+Style:
+
+* Modern healthcare aesthetic
+* Premium but approachable
+* Clean white backgrounds
+* Dark charcoal text
+* Deep blue primary color
+* Fresh green accent color
+* Large whitespace
+* Professional photography
+* Soft shadows
+* Rounded corners
+* Smooth animations
+* Mobile-first design
+
+Create CSS variables for:
+
+--primary
+--secondary
+--accent
+--text
+--text-light
+--background
+--surface
+--border
+
+---
+
+## HEADER
+
+Sticky navigation
+
+Logo:
+THE MAINTENANCE MAN
+
+Navigation:
+
+* Home
+* About
+* Services
+* Reviews
+* Contact
+
+Right Side CTA:
+
+BOOK APPOINTMENT
+
+Header becomes slightly elevated on scroll.
+
+---
+
+## HERO SECTION
+
+Large split layout
+
+Left Side:
+
+Headline:
+
+Sports Massage That Helps You Move Pain-Free
+
+Subheadline:
+
+Whether you're recovering from injury, training for performance, or dealing with everyday aches and stiffness, get expert treatment that helps you move better, recover faster, and feel your best.
+
+Trust indicators:
+
+★★★★★ 5.0 Rating
+79+ Reviews
+10+ Years Experience
+
+Buttons:
+
+Primary:
+Book Your Session
+
+Secondary:
+Call Now
+
+Right Side:
+
+High-quality sports massage therapy image
+
+Include subtle floating elements and modern background shapes.
+
+---
+
+## SOCIAL PROOF BAR
+
+Display:
+
+79+ Reviews
+10+ Years Experience
+Thousands of Treatments Delivered
+5-Star Rated Service
+
+---
+
+## ABOUT SECTION
+
+Headline:
+
+Helping London Stay Active, Healthy & Pain-Free
+
+Content:
+
+Explain the clinic's experience and philosophy.
+
+Include three benefit cards:
+
+* Injury Prevention
+* Faster Recovery
+* Improved Mobility
+
+Add professional therapist image.
+
+CTA:
+Book Your Assessment
+
+---
+
+## SERVICES SECTION
+
+Create 6 service cards.
+
+1. Sports Massage
+2. Deep Tissue Massage
+3. Injury Prevention
+4. Recovery Therapy
+5. Mobility Treatment
+6. Posture & Movement Assessment
+
+Each card includes:
+
+* Modern icon
+* Short description
+* Hover effect
+
+---
+
+## WHY CHOOSE US
+
+Headline:
+
+Why Clients Trust The Maintenance Man
+
+Create 6 feature cards:
+
+✓ 10+ Years Experience
+
+✓ Tailored Treatment Plans
+
+✓ Sports & Performance Focus
+
+✓ Comfortable Treatment Space
+
+✓ Proven Recovery Techniques
+
+✓ 5-Star Client Satisfaction
+
+---
+
+## PROCESS SECTION
+
+Headline:
+
+What To Expect
+
+Step 1:
+Book Your Appointment
+
+Step 2:
+Assessment & Consultation
+
+Step 3:
+Personalized Treatment
+
+Step 4:
+Move Better & Recover Faster
+
+Use connected timeline design.
+
+---
+
+## TESTIMONIALS SECTION
+
+Large premium review cards.
+
+Include:
+
+★★★★★
+
+"Adam provides a fantastic service, I highly recommend him."
+
+— Katie Rosier
+
+★★★★★
+
+"His new location in Finsbury Park is cosy and welcoming."
+
+— Lorena Pérez
+
+Add additional realistic testimonials.
+
+Include review statistics banner.
+
+---
+
+## BOOKING CTA SECTION
+
+Full-width highlighted section.
+
+Headline:
+
+Ready To Feel Better?
+
+Text:
+
+Stop living with pain, stiffness, and movement limitations. Book your treatment today.
+
+Button:
+
+Book Appointment
+
+---
+
+## CONTACT SECTION
+
+Two-column layout.
+
+Left:
+
+Contact Form
+
+Fields:
+
+* Name
+* Phone
+* Email
+* Treatment Needed
+* Message
+
+Button:
+
+Request Appointment
+
+Right:
+
+Business Information
+
+Address:
+232b Hornsey Rd, London N7 7LL
+
+Phone:
++44 7411 808807
+
+Opening Hours
+
+Map Placeholder
+
+---
+
+## FOOTER
+
+Include:
+
+Business information
+Quick links
+Contact details
+Social media icons
+
+Copyright
+
+---
+
+## CONVERSION FEATURES
+
+Required:
+
+✓ Sticky mobile booking button
+
+✓ CTA after every major section
+
+✓ Click-to-call phone links
+
+✓ Smooth scrolling
+
+✓ Scroll animations
+
+✓ FAQ accordion
+
+✓ Review highlights
+
+✓ Contact form validation
+
+✓ Fast loading
+
+✓ SEO-friendly structure
+
+✓ Accessibility compliant
+
+✓ Schema-ready markup
+
+---
+
+## SEO
+
+Primary Keywords:
+
+Sports Massage London
+Sports Massage Finsbury Park
+Deep Tissue Massage London
+Injury Prevention Therapy
+Sports Therapist London
+
+Create:
+
+* Optimized title tag
+* Meta description
+* Open Graph tags
+* Proper heading hierarchy
+
+---
+
+## TECH STACK
+
+Use:
+
+HTML5
+Modern CSS
+Vanilla JavaScript
+
+No frameworks.
+
+Generate complete production-ready code with all sections fully designed and responsive.

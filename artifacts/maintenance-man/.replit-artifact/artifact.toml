@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "The Maintenance Man"
+version = "1.0.0"
+id = "artifacts/maintenance-man"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22896
+
+[services.development]
+run = "pnpm --filter @workspace/maintenance-man run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/maintenance-man", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/maintenance-man/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22896"
+BASE_PATH = "/"
