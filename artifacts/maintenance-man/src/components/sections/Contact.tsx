@@ -34,49 +34,26 @@ const formSchema = z.object({
 
 export default function Contact() {
   const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: { name: '', phone: '', email: '', service: '', message: '' },
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    const endpoint = import.meta.env.VITE_FORM_ENDPOINT;
-    if (!endpoint) {
-      toast({
-        title: 'Form not configured',
-        description: 'Set VITE_FORM_ENDPOINT in your Vercel environment variables.',
-        variant: 'destructive',
-      });
-      return;
-    }
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    const to = 'info@themaintenanceman.co.uk';
+    const subject = encodeURIComponent(`Appointment Request – ${values.service}`);
+    const body = encodeURIComponent(
+      `Name: ${values.name}\nPhone: ${values.phone}\nEmail: ${values.email}\nService: ${values.service}${values.message ? `\n\nMessage:\n${values.message}` : ''}`
+    );
 
-    setIsSubmitting(true);
-    try {
-      const res = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(values),
-      });
+    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
 
-      if (!res.ok) throw new Error('Submission failed');
-
-      toast({
-        title: 'Request Sent Successfully',
-        description:
-          "Thanks for reaching out! We'll be in touch shortly to confirm your appointment.",
-      });
-      form.reset();
-    } catch {
-      toast({
-        title: 'Something went wrong',
-        description: 'Please try again or contact us directly by phone.',
-        variant: 'destructive',
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    toast({
+      title: 'Opening your email app…',
+      description: "Your details are pre-filled. Just hit send and we'll be in touch shortly.",
+    });
+    form.reset();
   }
 
   return (
