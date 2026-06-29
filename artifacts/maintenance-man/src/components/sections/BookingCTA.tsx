@@ -4,19 +4,7 @@ import { ArrowRight, Phone } from 'lucide-react';
 
 export default function BookingCTA() {
   return (
-    <section className="py-20 md:py-32 relative overflow-hidden">
-      {/* Base */}
-      <div className="absolute inset-0 bg-neutral-900" />
-
-      {/* Diagonal light sweep from top-left */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.07] via-transparent to-transparent" />
-
-      {/* Soft radial glow bottom-right */}
-      <div className="absolute -bottom-24 -right-24 w-[480px] h-[480px] rounded-full bg-white/5 blur-3xl pointer-events-none" />
-
-      {/* Subtle top border line */}
-      <div className="absolute top-0 inset-x-0 h-px bg-white/20" />
-
+    <section className="py-20 md:py-32 relative overflow-hidden bg-neutral-900">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
