@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLocation } from 'wouter';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -34,6 +35,7 @@ const formSchema = z.object({
 
 export default function Contact() {
   const { toast } = useToast();
+  const [, setLocation] = useLocation();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -52,11 +54,8 @@ export default function Contact() {
 
       if (!res.ok) throw new Error('Failed');
 
-      toast({
-        title: 'Request Sent Successfully',
-        description: "Thanks for reaching out! We'll be in touch shortly to confirm your appointment.",
-      });
       form.reset();
+      setLocation('/thank-you');
     } catch {
       toast({
         title: 'Something went wrong',
