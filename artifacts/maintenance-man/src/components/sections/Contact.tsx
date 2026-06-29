@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -33,26 +34,38 @@ const formSchema = z.object({
 
 export default function Contact() {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: { name: '', phone: '', email: '', service: '', message: '' },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    const to = 'info@themaintenanceman.co.uk';
-    const subject = encodeURIComponent(`Appointment Request – ${values.service}`);
-    const body = encodeURIComponent(
-      `Name: ${values.name}\nPhone: ${values.phone}\nEmail: ${values.email}\nService: ${values.service}${values.message ? `\n\nMessage:\n${values.message}` : ''}`
-    );
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
+      });
 
-    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+      if (!res.ok) throw new Error('Failed');
 
-    toast({
-      title: 'Opening your email app…',
-      description: "Your details are pre-filled. Just hit send and we'll be in touch shortly.",
-    });
-    form.reset();
+      toast({
+        title: 'Request Sent Successfully',
+        description: "Thanks for reaching out! We'll be in touch shortly to confirm your appointment.",
+      });
+      form.reset();
+    } catch {
+      toast({
+        title: 'Something went wrong',
+        description: 'Please try again or call us directly on +44 7411 808807.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -182,9 +195,10 @@ export default function Contact() {
 
                 <Button
                   type="submit"
+                  disabled={isSubmitting}
                   className="w-full h-12 text-base font-bold bg-primary hover:bg-primary/90 text-white rounded-md"
                 >
-                  Request Appointment
+                  {isSubmitting ? 'Sending…' : 'Request Appointment'}
                 </Button>
               </form>
             </Form>
