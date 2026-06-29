@@ -198,7 +198,7 @@ export default function Contact() {
             transition={{ duration: 0.5 }}
             className="flex flex-col gap-6"
           >
-            <div className="bg-primary text-white p-6 md:p-10 rounded-2xl shadow-lg">
+            <div className="bg-neutral-900 text-white p-6 md:p-10 rounded-2xl shadow-lg">
               <h3 className="text-xl md:text-2xl font-bold mb-6">Clinic Information</h3>
 
               <div className="space-y-5">

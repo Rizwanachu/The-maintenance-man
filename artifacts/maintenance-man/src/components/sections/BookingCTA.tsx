@@ -6,7 +6,7 @@ export default function BookingCTA() {
   return (
     <section className="py-20 md:py-32 relative overflow-hidden">
       {/* Base */}
-      <div className="absolute inset-0 bg-primary" />
+      <div className="absolute inset-0 bg-neutral-900" />
 
       {/* Diagonal light sweep from top-left */}
       <div className="absolute inset-0 bg-gradient-to-br from-white/[0.07] via-transparent to-transparent" />
