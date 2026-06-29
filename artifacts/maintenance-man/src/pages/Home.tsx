@@ -16,7 +16,8 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-1">
+      {/* pb-20 on mobile gives clearance for the sticky booking bar */}
+      <main className="flex-1 pb-20 md:pb-0">
         <Hero />
         <SocialProof />
         <About />

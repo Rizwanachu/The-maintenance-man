@@ -25,10 +25,10 @@ import { useToast } from '@/hooks/use-toast';
 import { MapPin, Phone, Clock, Mail } from 'lucide-react';
 
 const formSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters."),
-  phone: z.string().min(10, "Please enter a valid phone number."),
-  email: z.string().email("Please enter a valid email address."),
-  service: z.string().min(1, "Please select a treatment type."),
+  name: z.string().min(2, 'Name must be at least 2 characters.'),
+  phone: z.string().min(10, 'Please enter a valid phone number.'),
+  email: z.string().email('Please enter a valid email address.'),
+  service: z.string().min(1, 'Please select a treatment type.'),
   message: z.string().optional(),
 });
 
@@ -38,61 +38,59 @@ export default function Contact() {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      phone: "",
-      email: "",
-      service: "",
-      message: "",
-    },
+    defaultValues: { name: '', phone: '', email: '', service: '', message: '' },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  function onSubmit(_values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    // Simulate API call
     setTimeout(() => {
       setIsSubmitting(false);
       toast({
-        title: "Request Sent Successfully",
-        description: "Thanks for reaching out! We'll be in touch shortly to confirm your appointment.",
+        title: 'Request Sent Successfully',
+        description:
+          "Thanks for reaching out! We'll be in touch shortly to confirm your appointment.",
       });
       form.reset();
     }, 1500);
   }
 
   return (
-    <section id="contact" className="py-20 md:py-32 bg-secondary/30">
+    <section id="contact" className="py-16 md:py-32 bg-secondary/30">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-foreground tracking-tight">
+        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-foreground tracking-tight">
             Get In Touch
           </h2>
-          <p className="text-muted-foreground mt-4 text-lg">
+          <p className="text-muted-foreground mt-3 text-base md:text-lg">
             Request an appointment or ask a question. We usually respond within a few hours.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 max-w-6xl mx-auto">
-          
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 max-w-6xl mx-auto">
+
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-border"
+            className="bg-white p-6 md:p-10 rounded-2xl shadow-sm border border-border"
           >
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <FormField
                     control={form.control}
                     name="name"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-foreground font-semibold">Full Name *</FormLabel>
+                        <FormLabel className="text-foreground font-semibold text-sm">Full Name *</FormLabel>
                         <FormControl>
-                          <Input placeholder="John Doe" className="bg-secondary/50 border-transparent focus:bg-white h-12" {...field} />
+                          <Input
+                            placeholder="John Doe"
+                            className="bg-secondary/50 border-transparent focus:bg-white h-11"
+                            {...field}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -103,9 +101,13 @@ export default function Contact() {
                     name="phone"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-foreground font-semibold">Phone Number *</FormLabel>
+                        <FormLabel className="text-foreground font-semibold text-sm">Phone Number *</FormLabel>
                         <FormControl>
-                          <Input placeholder="+44 7000 000000" className="bg-secondary/50 border-transparent focus:bg-white h-12" {...field} />
+                          <Input
+                            placeholder="+44 7000 000000"
+                            className="bg-secondary/50 border-transparent focus:bg-white h-11"
+                            {...field}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -118,9 +120,13 @@ export default function Contact() {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-foreground font-semibold">Email Address *</FormLabel>
+                      <FormLabel className="text-foreground font-semibold text-sm">Email Address *</FormLabel>
                       <FormControl>
-                        <Input placeholder="john@example.com" className="bg-secondary/50 border-transparent focus:bg-white h-12" {...field} />
+                        <Input
+                          placeholder="john@example.com"
+                          className="bg-secondary/50 border-transparent focus:bg-white h-11"
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -132,10 +138,10 @@ export default function Contact() {
                   name="service"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-foreground font-semibold">Treatment Needed *</FormLabel>
+                      <FormLabel className="text-foreground font-semibold text-sm">Treatment Needed *</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
-                          <SelectTrigger className="bg-secondary/50 border-transparent focus:bg-white h-12">
+                          <SelectTrigger className="bg-secondary/50 border-transparent focus:bg-white h-11">
                             <SelectValue placeholder="Select a service" />
                           </SelectTrigger>
                         </FormControl>
@@ -158,12 +164,14 @@ export default function Contact() {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-foreground font-semibold">Message (Optional)</FormLabel>
+                      <FormLabel className="text-foreground font-semibold text-sm">
+                        Message (Optional)
+                      </FormLabel>
                       <FormControl>
-                        <Textarea 
-                          placeholder="Briefly describe your issue or goals..." 
-                          className="resize-none bg-secondary/50 border-transparent focus:bg-white min-h-[120px]" 
-                          {...field} 
+                        <Textarea
+                          placeholder="Briefly describe your issue or goals..."
+                          className="resize-none bg-secondary/50 border-transparent focus:bg-white min-h-[110px]"
+                          {...field}
                         />
                       </FormControl>
                       <FormMessage />
@@ -171,8 +179,12 @@ export default function Contact() {
                   )}
                 />
 
-                <Button type="submit" disabled={isSubmitting} className="w-full h-14 text-base font-bold bg-primary hover:bg-primary/90 text-white rounded-md">
-                  {isSubmitting ? "Sending..." : "Request Appointment"}
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full h-12 text-base font-bold bg-primary hover:bg-primary/90 text-white rounded-md"
+                >
+                  {isSubmitting ? 'Sending…' : 'Request Appointment'}
                 </Button>
               </form>
             </Form>
@@ -184,75 +196,106 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col h-full"
+            className="flex flex-col gap-6"
           >
-            <div className="bg-primary text-white p-8 md:p-10 rounded-2xl shadow-lg mb-8">
-              <h3 className="text-2xl font-bold mb-8">Clinic Information</h3>
-              
-              <div className="space-y-6">
+            <div className="bg-primary text-white p-6 md:p-10 rounded-2xl shadow-lg">
+              <h3 className="text-xl md:text-2xl font-bold mb-6">Clinic Information</h3>
+
+              <div className="space-y-5">
+                {/* Address */}
                 <div className="flex items-start gap-4">
-                  <div className="mt-1 bg-white/10 p-2 rounded-lg shrink-0">
-                    <MapPin className="w-5 h-5 text-accent" />
+                  <div className="mt-0.5 bg-white/10 p-2 rounded-lg shrink-0">
+                    <MapPin className="w-5 h-5 text-white/80" />
                   </div>
                   <div>
-                    <div className="font-bold text-lg mb-1">Location</div>
-                    <p className="text-white/80 leading-relaxed">
-                      232b Hornsey Rd<br />
-                      Finsbury Park<br />
-                      London N7 7LL
+                    <div className="font-bold text-base mb-0.5">Location</div>
+                    <p className="text-white/80 text-sm leading-relaxed">
+                      232b Hornsey Rd, Finsbury Park, London N7 7LL
                     </p>
                   </div>
                 </div>
 
+                {/* Phone */}
                 <div className="flex items-start gap-4">
-                  <div className="mt-1 bg-white/10 p-2 rounded-lg shrink-0">
-                    <Phone className="w-5 h-5 text-accent" />
+                  <div className="mt-0.5 bg-white/10 p-2 rounded-lg shrink-0">
+                    <Phone className="w-5 h-5 text-white/80" />
                   </div>
                   <div>
-                    <div className="font-bold text-lg mb-1">Phone</div>
-                    <a href="tel:+447411808807" className="text-white/80 hover:text-accent transition-colors block">
+                    <div className="font-bold text-base mb-0.5">Phone</div>
+                    <a
+                      href="tel:+447411808807"
+                      className="text-white/80 hover:text-white transition-colors text-sm"
+                    >
                       +44 7411 808807
                     </a>
                   </div>
                 </div>
-                
+
+                {/* Email */}
                 <div className="flex items-start gap-4">
-                  <div className="mt-1 bg-white/10 p-2 rounded-lg shrink-0">
-                    <Mail className="w-5 h-5 text-accent" />
+                  <div className="mt-0.5 bg-white/10 p-2 rounded-lg shrink-0">
+                    <Mail className="w-5 h-5 text-white/80" />
                   </div>
                   <div>
-                    <div className="font-bold text-lg mb-1">Email</div>
-                    <a href="mailto:info@themaintenanceman.co.uk" className="text-white/80 hover:text-accent transition-colors block">
+                    <div className="font-bold text-base mb-0.5">Email</div>
+                    <a
+                      href="mailto:info@themaintenanceman.co.uk"
+                      className="text-white/80 hover:text-white transition-colors text-sm break-all"
+                    >
                       info@themaintenanceman.co.uk
                     </a>
                   </div>
                 </div>
 
+                {/* Hours */}
                 <div className="flex items-start gap-4">
-                  <div className="mt-1 bg-white/10 p-2 rounded-lg shrink-0">
-                    <Clock className="w-5 h-5 text-accent" />
+                  <div className="mt-0.5 bg-white/10 p-2 rounded-lg shrink-0">
+                    <Clock className="w-5 h-5 text-white/80" />
                   </div>
-                  <div>
-                    <div className="font-bold text-lg mb-1">Hours</div>
-                    <ul className="text-white/80 space-y-1">
-                      <li className="flex justify-between w-48"><span>Mon – Fri:</span> <span>8:00 AM - 8:00 PM</span></li>
-                      <li className="flex justify-between w-48"><span>Saturday:</span> <span>9:00 AM - 5:00 PM</span></li>
-                      <li className="flex justify-between w-48"><span>Sunday:</span> <span>Closed</span></li>
+                  <div className="min-w-0">
+                    <div className="font-bold text-base mb-1">Opening Hours</div>
+                    <ul className="text-white/80 text-sm space-y-0.5">
+                      <li className="flex justify-between gap-6">
+                        <span>Mon – Fri</span>
+                        <span className="shrink-0">8:00 AM – 8:00 PM</span>
+                      </li>
+                      <li className="flex justify-between gap-6">
+                        <span>Saturday</span>
+                        <span className="shrink-0">9:00 AM – 5:00 PM</span>
+                      </li>
+                      <li className="flex justify-between gap-6">
+                        <span>Sunday</span>
+                        <span className="shrink-0">Closed</span>
+                      </li>
                     </ul>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Map Placeholder */}
-            <div className="bg-secondary rounded-2xl overflow-hidden flex-grow min-h-[250px] relative border border-border flex items-center justify-center">
-              <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80')] bg-cover bg-center mix-blend-luminosity"></div>
-              <div className="relative z-10 flex flex-col items-center bg-white/90 backdrop-blur-sm p-4 rounded-xl shadow-sm border border-border">
-                <MapPin className="w-8 h-8 text-primary mb-2" />
-                <span className="font-bold text-foreground">Finsbury Park, London</span>
-                <span className="text-sm text-muted-foreground">Open in Maps</span>
+            {/* Map placeholder — tappable link to Google Maps */}
+            <a
+              href="https://maps.google.com/?q=232b+Hornsey+Rd,+London+N7+7LL"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open clinic location in Google Maps"
+              className="block bg-secondary rounded-2xl overflow-hidden min-h-[200px] md:min-h-[220px] flex-grow relative border border-border hover:border-primary/40 transition-colors"
+            >
+              <div
+                className="absolute inset-0 opacity-20 bg-cover bg-center mix-blend-luminosity"
+                style={{
+                  backgroundImage:
+                    "url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80')",
+                }}
+              ></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="flex flex-col items-center bg-white/90 backdrop-blur-sm p-4 rounded-xl shadow-sm border border-border text-center">
+                  <MapPin className="w-7 h-7 text-primary mb-1.5" />
+                  <span className="font-bold text-foreground text-sm">Finsbury Park, London</span>
+                  <span className="text-xs text-primary mt-0.5 font-medium">Open in Maps ↗</span>
+                </div>
               </div>
-            </div>
+            </a>
           </motion.div>
 
         </div>
